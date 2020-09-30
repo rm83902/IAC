@@ -1,15 +1,15 @@
-- hosts: webservers
+- hosts: webservers 
   become: yes
-  tasks:
-    - name: Install do Apache Centos
+  tasks: 
+    - name: install Apache on Centos
       yum:
         name: httpd
         state: latest
 
     - name: Enable and Start
-      systemd: 
+      systemd:
         name: httpd
-        enable: yes
+        enabled: yes
         state: started
 
 - hosts: dbservers
@@ -17,17 +17,19 @@
   tasks:
     - name: Install MySQL Database
       apt:
-       name: mysql-server
-       state: latest
+        name: mysql-server
+        state: latest
+
 
     - name: Enable and Start
-      systemd: 
+      systemd:
         name: mysql
-        enable: yes
+        enabled: yes
         state: started
+
 - hosts: all
   become: yes
-  tasks: 
+  tasks:
     - name: Ensure group "Infra" exists
       group:
         name: infra
@@ -38,12 +40,6 @@
       user:
         name: sysops
         uid: 14000
-        groups: sudo.infra
+        groups: sudo,infra
         shell: /bin/bash
-
-
-
-
-
-
 
