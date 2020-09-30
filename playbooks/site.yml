@@ -20,11 +20,13 @@
        name: mysql-server
        state: latest
 
+
     - name: Enable and Start
       systemd: 
         name: mysql
         enable: yes
         state: started
+        
 - hosts: all
   become: yes
   tasks: 
