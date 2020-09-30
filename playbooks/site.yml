@@ -40,7 +40,7 @@
       user:
         name: sysops
         uid: 14000
-        groups: sudo.infra
+        groups: sudo,infra
         shell: /bin/bash
 
 
